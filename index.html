@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Toggle Button</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            width: 200px;
+            height: 100px;
+            background-color: darkgray;
+            border-radius: 200px;
+            cursor: pointer;
+            position: relative;
+            box-shadow:rgba(0,0,0,0.24) 0px 3px 8px;
+        }
+
+        .btn::before {
+            position: absolute;
+            content: "";
+            width: 90px;
+            height: 90px;
+            background-color: white;
+            margin: 5px;
+            border-radius: 200px;
+            transition:0.4s;
+        }
+
+        input:checked+.btn {
+            background-color: hotpink;
+
+        }
+
+        input:checked+.btn::before {
+            transform: translateX(100px);
+        }
+
+        input {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="checkbox" id="check" />
+        <label for="check" class="btn"></label>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            const checkbox=document.getElementById("check");
+            const cont=document.querySelector(".container");
+            checkbox.addEventListener("change",function(){
+                if(this.checked){
+                    cont.style.backgroundColor="#333";
+                }
+                else{
+                    cont.style.backgroundColor="lightblue";
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
